@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -696,6 +695,96 @@ section{
     letter-spacing:1px;
 }
 
+/* UPI PAYMENT BUTTON */
+
+.upi-pay-btn{
+    width:100%;
+    margin-top:15px;
+    background:linear-gradient(90deg,#00e5ff,#0077ff);
+    color:#030309;
+    box-shadow:0 0 22px #00e5ff59;
+}
+
+.upi-pay-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 35px #00e5ffa6;
+}
+
+/* PAYMENT FALLBACK MODAL */
+
+.payment-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:#000000cc;
+    backdrop-filter:blur(10px);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.payment-modal.show{
+    display:flex;
+}
+
+.payment-modal-box{
+    width:100%;
+    max-width:430px;
+    padding:28px;
+    border-radius:20px;
+    text-align:center;
+    background:linear-gradient(145deg,#151725,#08090e);
+    border:1px solid #00e5ff55;
+    box-shadow:0 20px 80px #000;
+}
+
+.payment-modal-box h3{
+    font:800 22px Orbitron;
+    color:#00e5ff;
+    margin-bottom:10px;
+}
+
+.payment-modal-box p{
+    color:#999;
+    font-size:11px;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.modal-qr{
+    width:180px;
+    height:180px;
+    object-fit:contain;
+    background:white;
+    padding:5px;
+    border-radius:10px;
+    margin:0 auto 15px;
+}
+
+.modal-upi{
+    color:#00e5ff;
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.modal-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.modal-buttons .btn{
+    width:100%;
+}
+
+.close-modal{
+    background:#ffffff0a;
+    border:1px solid #333747;
+    color:white;
+}
+
 /* HOW TO JOIN */
 
 .steps{
@@ -1072,27 +1161,19 @@ footer a{
 
     <div class="tournament-grid">
 
-        <!-- ₹12 -->
-
         <div class="tournament-card">
 
             <div class="card-glow"></div>
 
             <div class="card-top">
 
-                <div class="entry-icon">
-                    🟢
-                </div>
+                <div class="entry-icon">🟢</div>
 
-                <span class="status">
-                    OPEN
-                </span>
+                <span class="status">OPEN</span>
 
             </div>
 
-            <h3>
-                STARTER LOBBY
-            </h3>
+            <h3>STARTER LOBBY</h3>
 
             <p class="subtitle">
                 Perfect for players who want to start competing.
@@ -1116,9 +1197,7 @@ footer a{
 
                 <small>PRIZE POOL</small>
 
-                <strong>
-                    ₹100
-                </strong>
+                <strong>₹100</strong>
 
             </div>
 
@@ -1133,27 +1212,19 @@ footer a{
         </div>
 
 
-        <!-- ₹15 -->
-
         <div class="tournament-card">
 
             <div class="card-glow"></div>
 
             <div class="card-top">
 
-                <div class="entry-icon">
-                    🔵
-                </div>
+                <div class="entry-icon">🔵</div>
 
-                <span class="status">
-                    OPEN
-                </span>
+                <span class="status">OPEN</span>
 
             </div>
 
-            <h3>
-                PRO LOBBY
-            </h3>
+            <h3>PRO LOBBY</h3>
 
             <p class="subtitle">
                 Step up and compete against stronger players.
@@ -1177,9 +1248,7 @@ footer a{
 
                 <small>PRIZE POOL</small>
 
-                <strong>
-                    ₹130
-                </strong>
+                <strong>₹130</strong>
 
             </div>
 
@@ -1194,27 +1263,19 @@ footer a{
         </div>
 
 
-        <!-- ₹20 -->
-
         <div class="tournament-card premium">
 
             <div class="card-glow"></div>
 
             <div class="card-top">
 
-                <div class="entry-icon">
-                    🟣
-                </div>
+                <div class="entry-icon">🟣</div>
 
-                <span class="status">
-                    HOT
-                </span>
+                <span class="status">HOT</span>
 
             </div>
 
-            <h3>
-                ELITE LOBBY
-            </h3>
+            <h3>ELITE LOBBY</h3>
 
             <p class="subtitle">
                 High intensity competition for serious players.
@@ -1238,9 +1299,7 @@ footer a{
 
                 <small>PRIZE POOL</small>
 
-                <strong>
-                    ₹175
-                </strong>
+                <strong>₹175</strong>
 
             </div>
 
@@ -1255,27 +1314,19 @@ footer a{
         </div>
 
 
-        <!-- ₹40 -->
-
         <div class="tournament-card premium">
 
             <div class="card-glow"></div>
 
             <div class="card-top">
 
-                <div class="entry-icon">
-                    🔥
-                </div>
+                <div class="entry-icon">🔥</div>
 
-                <span class="status">
-                    PREMIUM
-                </span>
+                <span class="status">PREMIUM</span>
 
             </div>
 
-            <h3>
-                CHAMPION LOBBY
-            </h3>
+            <h3>CHAMPION LOBBY</h3>
 
             <p class="subtitle">
                 Premium battle for players ready to dominate.
@@ -1299,9 +1350,7 @@ footer a{
 
                 <small>PRIZE POOL</small>
 
-                <strong>
-                    ₹350
-                </strong>
+                <strong>₹350</strong>
 
             </div>
 
@@ -1345,9 +1394,7 @@ footer a{
 
         <div class="feature-box">
 
-            <h3>
-                🆓 FREE LOBBY
-            </h3>
+            <h3>🆓 FREE LOBBY</h3>
 
             <p>
                 No entry fee. Apne skills test karo,
@@ -1377,9 +1424,7 @@ footer a{
 
         <div class="feature-box paid">
 
-            <h3>
-                💎 PAID LOBBY
-            </h3>
+            <h3>💎 PAID LOBBY</h3>
 
             <p>
                 Competitive paid matches with different
@@ -1435,68 +1480,44 @@ footer a{
 
         <div class="time-card">
 
-            <div class="time">
-                12:00 PM
-            </div>
+            <div class="time">12:00 PM</div>
 
-            <h3>
-                AFTERNOON BATTLE
-            </h3>
+            <h3>AFTERNOON BATTLE</h3>
 
-            <span>
-                DAILY
-            </span>
+            <span>DAILY</span>
 
         </div>
 
 
         <div class="time-card">
 
-            <div class="time">
-                3:00 PM
-            </div>
+            <div class="time">3:00 PM</div>
 
-            <h3>
-                AFTERNOON RUSH
-            </h3>
+            <h3>AFTERNOON RUSH</h3>
 
-            <span>
-                DAILY
-            </span>
+            <span>DAILY</span>
 
         </div>
 
 
         <div class="time-card">
 
-            <div class="time">
-                6:00 PM
-            </div>
+            <div class="time">6:00 PM</div>
 
-            <h3>
-                EVENING CLASH
-            </h3>
+            <h3>EVENING CLASH</h3>
 
-            <span>
-                DAILY
-            </span>
+            <span>DAILY</span>
 
         </div>
 
 
         <div class="time-card">
 
-            <div class="time">
-                9:00 PM
-            </div>
+            <div class="time">9:00 PM</div>
 
-            <h3>
-                NIGHT SHOWDOWN
-            </h3>
+            <h3>NIGHT SHOWDOWN</h3>
 
-            <span>
-                DAILY
-            </span>
+            <span>DAILY</span>
 
         </div>
 
@@ -1616,8 +1637,6 @@ footer a{
 
                 <div class="qr-frame">
 
-                    <!-- FIXED GITHUB RAW QR IMAGE -->
-
                     <img
                         class="qr-image"
                         src="https://raw.githubusercontent.com/ashu00999/gaming-mount/main/qr.jpeg"
@@ -1634,13 +1653,86 @@ footer a{
                     UPI ID: 8299647826@fam
                 </div>
 
+
+                <!-- UPDATED UNIVERSAL UPI BUTTON -->
+
+                <a
+                    href="#"
+                    class="btn btn-primary upi-pay-btn"
+                    id="payNowBtn"
+                >
+                    💳 PAY NOW / OPEN UPI APP
+                </a>
+
             </div>
+
 
         </div>
 
     </div>
 
 </section>
+
+
+<!-- PAYMENT FALLBACK MODAL -->
+
+<div
+    class="payment-modal"
+    id="paymentModal"
+>
+
+    <div class="payment-modal-box">
+
+        <h3>
+            PAYMENT APP NOT OPENED
+        </h3>
+
+        <p>
+            Agar UPI app automatically open nahi hua,
+            toh neeche QR code scan karke kisi bhi
+            UPI payment app se payment karein.
+        </p>
+
+        <img
+            src="https://raw.githubusercontent.com/ashu00999/gaming-mount/main/qr.jpeg"
+            class="modal-qr"
+            alt="Gaming Mount Payment QR"
+        >
+
+        <div class="modal-upi">
+            UPI ID: 8299647826@fam
+        </div>
+
+        <div class="modal-buttons">
+
+            <a
+                href="upi://pay?pa=8299647826@fam&pn=Gaming%20Mount&cu=INR"
+                class="btn btn-primary"
+                id="retryUpi"
+            >
+                🔄 TRY UPI APP AGAIN
+            </a>
+
+            <a
+                href="https://raw.githubusercontent.com/ashu00999/gaming-mount/main/qr.jpeg"
+                target="_blank"
+                class="btn btn-outline"
+            >
+                📷 OPEN QR CODE
+            </a>
+
+            <button
+                class="btn close-modal"
+                id="closePaymentModal"
+            >
+                ✕ CLOSE
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <!-- HOW TO JOIN -->
@@ -1803,6 +1895,7 @@ footer a{
 <footer>
 
     © 2026
+
     <strong>
         GAMING MOUNT
     </strong>
@@ -1837,7 +1930,187 @@ footer a{
 
 <script>
 
-/* SLOT BOOKING WHATSAPP */
+/* ==========================================
+   GAMING MOUNT UPI PAYMENT SYSTEM
+   ========================================== */
+
+const UPI_ID = "8299647826@fam";
+const MERCHANT_NAME = "Gaming Mount";
+
+const upiURL =
+    "upi://pay?pa=" +
+    encodeURIComponent(UPI_ID) +
+    "&pn=" +
+    encodeURIComponent(MERCHANT_NAME) +
+    "&cu=INR";
+
+
+/*
+   PAY NOW BUTTON
+
+   First:
+   - Android/browser ko UPI intent diya jayega.
+
+   Then:
+   - Agar app open nahi hoti to fallback popup.
+*/
+
+const payNowBtn =
+    document.getElementById("payNowBtn");
+
+const paymentModal =
+    document.getElementById("paymentModal");
+
+const closePaymentModal =
+    document.getElementById("closePaymentModal");
+
+const retryUpi =
+    document.getElementById("retryUpi");
+
+
+function openUPI(){
+
+    /*
+       Android Intent URL
+
+       Isse Android system compatible
+       UPI apps ko handle karne ki koshish karega.
+    */
+
+    const androidIntent =
+        "intent://pay?pa=" +
+        encodeURIComponent(UPI_ID) +
+        "&pn=" +
+        encodeURIComponent(MERCHANT_NAME) +
+        "&cu=INR" +
+        "#Intent;scheme=upi;" +
+        "action=android.intent.action.VIEW;" +
+        "end";
+
+
+    /*
+       Mobile Android par intent try karo.
+    */
+
+    if(/Android/i.test(navigator.userAgent)){
+
+        window.location.href = androidIntent;
+
+        /*
+           Agar intent handle nahi hua,
+           fallback popup.
+        */
+
+        setTimeout(function(){
+
+            paymentModal.classList.add("show");
+
+        },1800);
+
+        return;
+    }
+
+
+    /*
+       iPhone / iPad / other mobile
+       par normal UPI URL try karo.
+    */
+
+    if(
+        /iPhone|iPad|iPod/i.test(navigator.userAgent)
+    ){
+
+        window.location.href = upiURL;
+
+        setTimeout(function(){
+
+            paymentModal.classList.add("show");
+
+        },1800);
+
+        return;
+    }
+
+
+    /*
+       Desktop / laptop
+
+       UPI apps usually available nahi hoti,
+       isliye direct QR fallback.
+    */
+
+    paymentModal.classList.add("show");
+
+}
+
+
+/*
+   PAY NOW CLICK
+*/
+
+payNowBtn.addEventListener(
+    "click",
+    function(e){
+
+        e.preventDefault();
+
+        openUPI();
+
+    }
+);
+
+
+/*
+   RETRY UPI BUTTON
+*/
+
+retryUpi.addEventListener(
+    "click",
+    function(e){
+
+        e.preventDefault();
+
+        window.location.href = upiURL;
+
+    }
+);
+
+
+/*
+   CLOSE PAYMENT MODAL
+*/
+
+closePaymentModal.addEventListener(
+    "click",
+    function(){
+
+        paymentModal.classList.remove("show");
+
+    }
+);
+
+
+/*
+   Modal ke bahar click karne par close
+*/
+
+paymentModal.addEventListener(
+    "click",
+    function(e){
+
+        if(e.target === paymentModal){
+
+            paymentModal.classList.remove("show");
+
+        }
+
+    }
+);
+
+
+/* ==========================================
+   SLOT BOOKING WHATSAPP
+   ========================================== */
 
 const SLOT_BOOKING_WHATSAPP =
 "919307912119";
@@ -1847,31 +2120,36 @@ document
 .querySelectorAll(".slot-book")
 .forEach(button => {
 
-    button.addEventListener("click", function(e){
+    button.addEventListener(
+        "click",
+        function(e){
 
-        e.preventDefault();
+            e.preventDefault();
 
-        const message =
-        button.dataset.message ||
-        "Hello Gaming Mount! I want to book a tournament slot.";
+            const message =
+            button.dataset.message ||
+            "Hello Gaming Mount! I want to book a tournament slot.";
 
-        const whatsappURL =
-        "https://wa.me/" +
-        SLOT_BOOKING_WHATSAPP +
-        "?text=" +
-        encodeURIComponent(message);
+            const whatsappURL =
+            "https://wa.me/" +
+            SLOT_BOOKING_WHATSAPP +
+            "?text=" +
+            encodeURIComponent(message);
 
-        window.open(
-            whatsappURL,
-            "_blank"
-        );
+            window.open(
+                whatsappURL,
+                "_blank"
+            );
 
-    });
+        }
+    );
 
 });
 
 
-/* MOBILE MENU */
+/* ==========================================
+   MOBILE MENU
+   ========================================== */
 
 function toggleMenu(){
 
@@ -1902,7 +2180,9 @@ document
 });
 
 
-/* GAMING PARTICLES */
+/* ==========================================
+   GAMING PARTICLES
+   ========================================== */
 
 const particles =
 document.getElementById("particles");
@@ -1938,4 +2218,3 @@ for(let i = 0; i < 55; i++){
 
 </body>
 </html>
-```
