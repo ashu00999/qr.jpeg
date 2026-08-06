@@ -22,7 +22,6 @@
 
 html{
     scroll-behavior:smooth;
-    scroll-padding-top:85px;
 }
 
 body{
@@ -32,7 +31,9 @@ body{
     overflow-x:hidden;
 }
 
-/* ================= BACKGROUND ================= */
+/* =========================================================
+   GAMING BACKGROUND
+========================================================= */
 
 body::before{
     content:"";
@@ -41,34 +42,42 @@ body::before{
     z-index:-10;
 
     background:
-    radial-gradient(circle at 10% 15%,#00e5ff30,transparent 25%),
-    radial-gradient(circle at 90% 15%,#ff006630,transparent 27%),
-    radial-gradient(circle at 50% 90%,#7900ff25,transparent 35%),
-    linear-gradient(135deg,#03040a,#080510 45%,#030409);
+    radial-gradient(circle at 15% 20%,#00e5ff35,transparent 25%),
+    radial-gradient(circle at 85% 15%,#ff006635,transparent 27%),
+    radial-gradient(circle at 50% 75%,#7b00ff25,transparent 35%),
+    linear-gradient(115deg,#03040a,#080812 45%,#050509);
 }
 
-/* GAMING GRID */
+/* Gaming grid */
 
 body::after{
     content:"";
     position:fixed;
     inset:0;
     z-index:-9;
-    pointer-events:none;
+    opacity:.08;
 
     background-image:
-    linear-gradient(#00e5ff12 1px,transparent 1px),
-    linear-gradient(90deg,#00e5ff12 1px,transparent 1px);
+    linear-gradient(#00e5ff 1px,transparent 1px),
+    linear-gradient(90deg,#00e5ff 1px,transparent 1px);
 
     background-size:55px 55px;
 
     transform:perspective(500px) rotateX(55deg) scale(1.8);
     transform-origin:center bottom;
-
-    opacity:.45;
+    animation:gridMove 12s linear infinite;
 }
 
-/* GAMING SCENE */
+@keyframes gridMove{
+    from{
+        background-position:0 0,0 0;
+    }
+    to{
+        background-position:0 55px,55px 0;
+    }
+}
+
+/* Floating gaming scene */
 
 .gaming-scene{
     position:fixed;
@@ -78,137 +87,93 @@ body::after{
     overflow:hidden;
 }
 
-/* Horizon */
-
-.gaming-scene .horizon{
+.gaming-scene::before{
+    content:"";
     position:absolute;
-    left:0;
-    right:0;
-    bottom:25%;
-    height:2px;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        #00e5ff,
-        #ff247f,
-        #00e5ff,
-        transparent
-    );
-
-    box-shadow:
-    0 0 10px #00e5ff,
-    0 0 30px #ff247f;
-}
-
-/* Neon sun */
-
-.neon-sun{
-    position:absolute;
-    width:260px;
-    height:260px;
+    width:500px;
+    height:500px;
+    left:-180px;
+    bottom:-180px;
     border-radius:50%;
-    top:12%;
-    left:50%;
-    transform:translateX(-50%);
-
-    background:
-    radial-gradient(
-        circle,
-        #ff247f33 0%,
-        #ff247f18 40%,
-        transparent 70%
-    );
-
-    box-shadow:
-    0 0 60px #ff247f25,
-    0 0 130px #00e5ff15;
+    background:#00e5ff;
+    filter:blur(130px);
+    opacity:.12;
 }
 
-/* Mountains */
-
-.mountain{
+.gaming-scene::after{
+    content:"";
     position:absolute;
-    bottom:24%;
-    width:0;
-    height:0;
-
-    border-left:220px solid transparent;
-    border-right:220px solid transparent;
-    border-bottom:220px solid #070b14;
-
-    filter:drop-shadow(0 0 10px #00e5ff20);
+    width:450px;
+    height:450px;
+    right:-150px;
+    top:-150px;
+    border-radius:50%;
+    background:#ff0066;
+    filter:blur(130px);
+    opacity:.12;
 }
 
-.mountain.one{
-    left:2%;
-}
-
-.mountain.two{
-    left:25%;
-    transform:scale(1.4);
-    opacity:.7;
-}
-
-.mountain.three{
-    right:5%;
-    transform:scale(1.2);
-    opacity:.8;
-}
-
-/* Gaming road */
-
-.gaming-road{
-    position:absolute;
-    bottom:-10%;
-    left:50%;
-    width:170px;
-    height:70%;
-    transform:translateX(-50%) perspective(400px) rotateX(55deg);
-
-    background:
-    repeating-linear-gradient(
-        to bottom,
-        transparent 0 55px,
-        #00e5ff55 56px 59px
-    );
-
-    border-left:2px solid #00e5ff33;
-    border-right:2px solid #ff247f33;
-
-    opacity:.35;
-}
-
-/* Floating HUD */
+/* Gaming HUD */
 
 .hud{
     position:absolute;
-    color:#00e5ff;
+    width:280px;
+    height:160px;
+    right:6%;
+    top:28%;
+    border:1px solid #00e5ff20;
+    background:#00e5ff05;
+    transform:skewX(-12deg);
+    box-shadow:
+    inset 0 0 35px #00e5ff08,
+    0 0 35px #00e5ff08;
+}
+
+.hud::before{
+    content:"";
+    position:absolute;
+    width:70%;
+    height:2px;
+    top:25px;
+    left:15%;
+    background:#00e5ff;
+    box-shadow:
+    0 30px #ff247f,
+    0 60px #00e5ff,
+    0 90px #7900ff;
+    opacity:.5;
+}
+
+.hud::after{
+    content:"FREE FIRE // GAMING MOUNT";
+    position:absolute;
+    bottom:15px;
+    left:20px;
     font:700 9px Orbitron;
     letter-spacing:2px;
-    opacity:.25;
+    color:#00e5ff;
 }
 
-.hud.left{
-    top:28%;
-    left:3%;
+.hud-left{
+    position:absolute;
+    width:220px;
+    height:120px;
+    left:5%;
+    top:45%;
+    border-left:2px solid #ff247f33;
+    border-bottom:2px solid #ff247f33;
+    opacity:.5;
 }
 
-.hud.right{
-    top:35%;
-    right:3%;
+.hud-left::before{
+    content:"BATTLE SYSTEM ONLINE";
+    position:absolute;
+    left:15px;
+    bottom:15px;
     color:#ff247f;
-    text-align:right;
+    font:700 8px Orbitron;
+    letter-spacing:2px;
 }
-
-.hud-line{
-    width:100px;
-    height:1px;
-    margin-top:7px;
-    background:currentColor;
-}
-
-/* SCANLINES */
 
 .scanlines{
     position:fixed;
@@ -224,7 +189,9 @@ body::after{
     );
 }
 
-/* ================= NAVBAR ================= */
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .navbar{
     position:fixed;
@@ -232,16 +199,14 @@ body::after{
     left:0;
     width:100%;
     z-index:50;
-
     padding:15px 6%;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    background:#04040de8;
+    background:#04040deb;
     backdrop-filter:blur(16px);
-
     border-bottom:1px solid #00e5ff29;
 }
 
@@ -252,7 +217,6 @@ body::after{
 
 .logo span{
     color:#00e5ff;
-
     text-shadow:
     0 0 10px #00e5ff,
     0 0 25px #00e5ff;
@@ -266,10 +230,8 @@ body::after{
 .nav-links a{
     color:#c6c6cf;
     text-decoration:none;
-
     font-size:12px;
     font-weight:700;
-
     transition:.2s;
 }
 
@@ -280,16 +242,9 @@ body::after{
 .nav-live{
     color:white;
     text-decoration:none;
-
     padding:10px 16px;
     border-radius:7px;
-
-    background:linear-gradient(
-        90deg,
-        #ff075f,
-        #9500ff
-    );
-
+    background:linear-gradient(90deg,#ff075f,#9500ff);
     font-size:11px;
     font-weight:800;
 }
@@ -300,7 +255,9 @@ body::after{
     cursor:pointer;
 }
 
-/* ================= HERO ================= */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
     min-height:100vh;
@@ -308,11 +265,9 @@ body::after{
 
     display:grid;
     place-items:center;
-
     text-align:center;
 
     padding:145px 6% 85px;
-
     overflow:hidden;
 }
 
@@ -324,35 +279,24 @@ body::after{
 
 .badge{
     display:inline-block;
-
     padding:8px 15px;
-
     border:1px solid #00e5ff66;
     border-radius:50px;
-
     background:#00e5ff0f;
-
     color:#00e5ff;
-
     font-size:10px;
     font-weight:800;
-
     letter-spacing:3px;
-
-    box-shadow:0 0 25px #00e5ff12;
 }
 
 .hero h1{
     font:900 clamp(50px,10vw,105px)/.94 Orbitron;
-
     letter-spacing:-4px;
-
     margin:24px 0 18px;
 }
 
 .cyan{
     color:#00e5ff;
-
     text-shadow:
     0 0 12px #00e5ff,
     0 0 45px #00e5ff8c;
@@ -360,113 +304,84 @@ body::after{
 
 .hero h2{
     font:700 clamp(15px,3vw,24px) Orbitron;
-
     letter-spacing:3px;
-
     color:#ddd;
 }
 
 .hero p{
     max-width:720px;
-
     margin:20px auto;
-
     color:#999;
-
     font-size:14px;
     line-height:1.85;
 }
 
 .hero-buttons{
     display:flex;
-
     justify-content:center;
-
     gap:12px;
-
     flex-wrap:wrap;
-
     margin-top:28px;
 }
 
-/* BUTTON */
-
 .btn{
     display:inline-flex;
-
     align-items:center;
     justify-content:center;
 
     padding:13px 21px;
-
     border-radius:8px;
 
     text-decoration:none;
-
     font-size:12px;
     font-weight:800;
 
     transition:.25s;
-
     cursor:pointer;
-
     border:0;
 }
 
 .btn-primary{
     background:#00e5ff;
-
     color:#030309;
-
     box-shadow:0 0 22px #00e5ff59;
 }
 
 .btn-primary:hover{
     transform:translateY(-4px);
-
-    box-shadow:
-    0 0 35px #00e5ffa6;
+    box-shadow:0 0 35px #00e5ffa6;
 }
 
 .btn-outline{
     background:#ffffff08;
-
     border:1px solid #363846;
-
     color:white;
 }
 
 .btn-outline:hover{
     border-color:#ff247f;
-
     color:#ff247f;
-
     transform:translateY(-4px);
 }
 
-/* ================= PARTICLES ================= */
+/* =========================================================
+   PARTICLES
+========================================================= */
 
 .particles{
     position:absolute;
     inset:0;
-
     pointer-events:none;
-
     overflow:hidden;
 }
 
 .particle{
     position:absolute;
-
     width:3px;
     height:3px;
-
     border-radius:50%;
-
     background:#00e5ff;
-
     box-shadow:0 0 10px #00e5ff;
-
     animation:rise linear infinite;
 }
 
@@ -488,142 +403,111 @@ body::after{
 
 }
 
-/* ================= STATS ================= */
+/* =========================================================
+   STATS
+========================================================= */
 
 .stats{
     max-width:1100px;
-
     margin:-35px auto 0;
-
     padding:0 6%;
 
     position:relative;
 
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
     gap:13px;
 }
 
 .stat{
     padding:20px;
-
     text-align:center;
 
-    background:#0d0e17d9;
-
+    background:#0d0e17d1;
     border:1px solid #25283a;
-
     border-radius:13px;
 
     transition:.3s;
-
-    backdrop-filter:blur(8px);
 }
 
 .stat:hover{
     transform:translateY(-5px);
-
     border-color:#00e5ff;
-
-    box-shadow:0 10px 35px #00e5ff12;
 }
 
 .stat strong{
     display:block;
-
     font:800 25px Orbitron;
-
     color:#00e5ff;
 }
 
 .stat span{
     display:block;
-
     color:#666;
-
     font-size:9px;
-
     margin-top:5px;
-
     letter-spacing:1px;
 }
 
-/* ================= SECTION ================= */
+/* =========================================================
+   SECTION
+========================================================= */
 
 section{
     padding:90px 6%;
+    scroll-margin-top:80px;
 }
 
 .section-head{
     text-align:center;
-
     margin-bottom:42px;
 }
 
 .kicker{
     font:800 10px Orbitron;
-
     color:#ff247f;
-
     letter-spacing:4px;
 }
 
 .section-head h2{
     font:800 clamp(28px,5vw,44px) Orbitron;
-
     margin:9px 0;
 }
 
 .section-head p{
     color:#858591;
-
     font-size:12px;
 }
 
-/* ================= TOURNAMENT ================= */
+/* =========================================================
+   TOURNAMENT
+========================================================= */
 
 .tournament-grid{
     max-width:1200px;
-
     margin:auto;
 
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
     gap:16px;
 }
 
 .tournament-card{
     position:relative;
-
     overflow:hidden;
 
     padding:23px 20px;
-
     border-radius:16px;
 
-    background:
-    linear-gradient(
-        145deg,
-        #151725e8,
-        #090a10ed
-    );
-
+    background:linear-gradient(145deg,#151725,#090a10);
     border:1px solid #272a3b;
 
     transition:.3s;
-
-    backdrop-filter:blur(8px);
 }
 
 .tournament-card:hover{
     transform:translateY(-8px);
-
     border-color:#00e5ff;
-
     box-shadow:0 18px 45px #00e5ff17;
 }
 
@@ -643,9 +527,7 @@ section{
     top:-60px;
 
     background:#00e5ff;
-
     filter:blur(70px);
-
     opacity:.1;
 }
 
@@ -655,11 +537,8 @@ section{
 
 .card-top{
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     margin-bottom:17px;
 }
 
@@ -669,102 +548,73 @@ section{
 
 .status{
     padding:6px 9px;
-
     border-radius:5px;
 
     font-size:8px;
-
     font-weight:900;
-
     letter-spacing:1px;
 
     color:#00e5ff;
-
     background:#00e5ff14;
 }
 
 .premium .status{
     color:#ff247f;
-
     background:#ff247f14;
 }
 
 .tournament-card h3{
     font:700 18px Orbitron;
-
     margin-bottom:8px;
 }
 
 .subtitle{
     color:#777;
-
     font-size:11px;
-
     line-height:1.6;
-
     min-height:36px;
 }
 
 .info{
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:8px;
-
     margin:18px 0;
 }
 
 .info-box{
     background:#ffffff09;
-
     padding:10px;
-
     border-radius:7px;
 }
 
 .info-box small{
     display:block;
-
     color:#666;
-
     font-size:8px;
-
     letter-spacing:1px;
 }
 
 .info-box b{
     display:block;
-
     font-size:13px;
-
     margin-top:3px;
 }
 
 .prize{
     padding:12px;
-
     margin-bottom:17px;
-
     text-align:center;
 
     border-radius:8px;
 
-    background:
-    linear-gradient(
-        90deg,
-        #00e5ff12,
-        #ff247f12
-    );
-
+    background:linear-gradient(90deg,#00e5ff12,#ff247f12);
     border:1px solid #ffffff0f;
 }
 
 .prize small{
     display:block;
-
     color:#777;
-
     font-size:8px;
 }
 
@@ -776,83 +626,59 @@ section{
     width:100%;
 }
 
-/* ================= FREE / PAID ================= */
+/* =========================================================
+   FREE / PAID
+========================================================= */
 
 .split{
     max-width:1200px;
-
     margin:auto;
 
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:20px;
 }
 
 .feature-box{
     padding:32px;
-
     border-radius:19px;
 
-    background:
-    linear-gradient(
-        135deg,
-        #00e5ff12,
-        #0a0b12f5
-    );
-
+    background:linear-gradient(135deg,#00e5ff12,#0a0b12f5);
     border:1px solid #00e5ff3b;
 }
 
 .feature-box.paid{
-    background:
-    linear-gradient(
-        135deg,
-        #ff247f12,
-        #0a0b12f5
-    );
-
+    background:linear-gradient(135deg,#ff247f12,#0a0b12f5);
     border-color:#ff247f3b;
 }
 
 .feature-box h3{
     font:700 25px Orbitron;
-
     margin-bottom:10px;
 }
 
 .feature-box p{
     color:#999;
-
     font-size:12px;
-
     line-height:1.75;
-
     margin-bottom:20px;
 }
 
 .feature-list{
     list-style:none;
-
     margin-bottom:22px;
 }
 
 .feature-list li{
     color:#bbb;
-
     font-size:11px;
-
     margin:10px 0;
 }
 
 .feature-list li:before{
     content:"✓";
-
     color:#00e5ff;
-
     font-weight:900;
-
     margin-right:10px;
 }
 
@@ -860,17 +686,161 @@ section{
     color:#ff247f;
 }
 
-/* ================= TIMINGS ================= */
+/* =========================================================
+   MATCH MAPS
+========================================================= */
 
-.timing-grid{
-    max-width:1000px;
+.map-section{
+    position:relative;
+}
 
+.map-section::before{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:#00e5ff;
+    filter:blur(150px);
+    opacity:.06;
+    pointer-events:none;
+}
+
+.match-mode{
+    max-width:1100px;
+    margin:0 auto 25px;
+
+    padding:16px 20px;
+    text-align:center;
+
+    border-radius:12px;
+
+    background:linear-gradient(90deg,#00e5ff0b,#ff247f0b);
+    border:1px solid #ffffff12;
+}
+
+.match-mode strong{
+    color:#00e5ff;
+    font:800 14px Orbitron;
+    letter-spacing:2px;
+}
+
+.match-mode span{
+    display:block;
+    margin-top:5px;
+    color:#777;
+    font-size:10px;
+}
+
+.map-grid{
+    max-width:1100px;
     margin:auto;
 
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
 
+.map-card{
+    position:relative;
+    overflow:hidden;
+
+    min-height:190px;
+    padding:25px 18px;
+
+    border-radius:17px;
+
+    background:
+    linear-gradient(145deg,#111624,#08090e);
+
+    border:1px solid #272a3b;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.map-card:hover{
+    transform:translateY(-8px);
+    border-color:#00e5ff;
+    box-shadow:0 18px 45px #00e5ff18;
+}
+
+.map-number{
+    display:inline-grid;
+    place-items:center;
+
+    width:38px;
+    height:38px;
+
+    margin-bottom:12px;
+
+    border-radius:50%;
+
+    background:#00e5ff12;
+    border:1px solid #00e5ff66;
+
+    color:#00e5ff;
+    font:800 11px Orbitron;
+}
+
+.map-icon{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.map-card h3{
+    font:800 17px Orbitron;
+}
+
+.map-card p{
+    margin-top:7px;
+    color:#777;
+    font-size:9px;
+    letter-spacing:1px;
+}
+
+.back-to-back{
+    max-width:1100px;
+    margin:20px auto 0;
+
+    padding:14px;
+
+    text-align:center;
+
+    border-radius:10px;
+
+    background:#ff247f0c;
+    border:1px solid #ff247f35;
+
+    color:#ff247f;
+    font:800 11px Orbitron;
+    letter-spacing:2px;
+
+    animation:pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow{
+
+    50%{
+        box-shadow:0 0 25px #ff247f15;
+    }
+
+}
+
+/* =========================================================
+   TIMINGS
+========================================================= */
+
+.timing-grid{
+    max-width:1000px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
     gap:15px;
 }
 
@@ -881,65 +851,48 @@ section{
 
     border-radius:14px;
 
-    background:#0c0d15e8;
-
+    background:#0c0d15;
     border:1px solid #242737;
 
     transition:.3s;
-
-    backdrop-filter:blur(8px);
 }
 
 .time-card:hover{
     transform:translateY(-6px);
-
     border-color:#ff247f;
-
-    box-shadow:0 12px 30px #ff247f12;
 }
 
 .time{
     font:800 22px Orbitron;
-
     color:#00e5ff;
 }
 
 .time-card h3{
     font-size:11px;
-
     margin-top:8px;
 }
 
 .time-card span{
     display:block;
-
     color:#666;
-
     font-size:8px;
-
     margin-top:5px;
-
     letter-spacing:1px;
 }
 
-/* ================= PAYMENT ================= */
+/* =========================================================
+   PAYMENT
+========================================================= */
 
 .payment-box{
     max-width:1100px;
-
     margin:auto;
 
     padding:34px;
 
     border-radius:22px;
 
-    background:
-    linear-gradient(
-        135deg,
-        #00e5ff12,
-        #0a0a12f7
-    );
-
+    background:linear-gradient(135deg,#00e5ff12,#0a0a12f7);
     border:1px solid #00e5ff40;
 
     box-shadow:0 20px 60px #00000059;
@@ -947,11 +900,8 @@ section{
 
 .payment-content{
     display:grid;
-
     grid-template-columns:1fr 390px;
-
     gap:45px;
-
     align-items:center;
 }
 
@@ -959,89 +909,67 @@ section{
     display:inline-block;
 
     padding:7px 13px;
-
     border-radius:30px;
 
     color:#00e5ff;
-
     background:#00e5ff12;
-
     border:1px solid #00e5ff33;
 
     font-size:9px;
-
     font-weight:800;
-
     letter-spacing:2px;
 }
 
 .payment-left h3{
     font:700 32px Orbitron;
-
     margin:15px 0 10px;
 }
 
 .payment-left>p{
     color:#92929e;
-
     font-size:12px;
-
     line-height:1.8;
 }
 
 .payment-fees{
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
     gap:8px;
-
     margin:23px 0;
 }
 
 .payment-fees div{
     padding:12px 7px;
-
     text-align:center;
 
     border-radius:8px;
 
     background:#ffffff09;
-
     border:1px solid #262938;
 }
 
 .payment-fees span{
     display:block;
-
     color:#00e5ff;
-
     font:800 17px Orbitron;
 }
 
 .payment-fees small{
     display:block;
-
     color:#666;
-
     font-size:7px;
-
     margin-top:4px;
-
     letter-spacing:1px;
 }
 
 .payment-steps p{
     color:#888;
-
     font-size:10px;
-
     margin:10px 0;
 }
 
 .payment-steps b{
     display:inline-grid;
-
     place-items:center;
 
     width:24px;
@@ -1052,7 +980,6 @@ section{
     border-radius:50%;
 
     color:#050509;
-
     background:#00e5ff;
 
     font-size:8px;
@@ -1068,29 +995,23 @@ section{
     border-radius:18px;
 
     background:#00000057;
-
     border:1px solid #282b3a;
 }
 
 .qr-title{
     font:700 13px Orbitron;
-
     color:#00e5ff;
-
     letter-spacing:2px;
-
     margin-bottom:15px;
 }
 
 .qr-frame{
     max-width:330px;
-
     margin:auto;
 
     padding:7px;
 
     background:white;
-
     border-radius:12px;
 
     box-shadow:0 0 28px #00e5ff2e;
@@ -1099,42 +1020,28 @@ section{
 .qr-image{
     width:100%;
     height:auto;
-
     display:block;
-
     border-radius:7px;
 }
 
 .qr-scan{
     font:800 12px Orbitron;
-
     margin-top:15px;
-
     letter-spacing:2px;
 }
 
 .qr-note{
     color:#666;
-
     font-size:8px;
-
     margin-top:5px;
-
     letter-spacing:1px;
 }
 
 .upi-pay-btn{
     width:100%;
-
     margin-top:15px;
 
-    background:
-    linear-gradient(
-        90deg,
-        #00e5ff,
-        #0077ff
-    );
-
+    background:linear-gradient(90deg,#00e5ff,#0077ff);
     color:#030309;
 
     box-shadow:0 0 22px #00e5ff59;
@@ -1142,25 +1049,23 @@ section{
 
 .upi-pay-btn:hover{
     transform:translateY(-4px);
-
     box-shadow:0 0 35px #00e5ffa6;
 }
 
-/* ================= HOW TO JOIN ================= */
+/* =========================================================
+   HOW TO JOIN
+========================================================= */
 
-#join{
-    scroll-margin-top:90px;
+.join-section{
+    position:relative;
 }
 
 .steps{
     max-width:1000px;
-
     margin:auto;
 
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:17px;
 }
 
@@ -1169,22 +1074,16 @@ section{
 
     padding:28px 18px;
 
-    background:#0c0d15e8;
-
+    background:#0c0d15;
     border:1px solid #242737;
-
     border-radius:15px;
 
     transition:.3s;
-
-    backdrop-filter:blur(8px);
 }
 
 .step:hover{
     transform:translateY(-7px);
-
     border-color:#00e5ff;
-
     box-shadow:0 15px 35px #00e5ff12;
 }
 
@@ -1195,7 +1094,6 @@ section{
     margin:0 auto 15px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:50%;
@@ -1203,27 +1101,23 @@ section{
     font:700 12px Orbitron;
 
     color:#00e5ff;
-
     border:1px solid #00e5ff;
-
-    box-shadow:0 0 20px #00e5ff20;
 }
 
 .step h3{
     font:700 13px Orbitron;
-
     margin-bottom:7px;
 }
 
 .step p{
     color:#777;
-
     font-size:10px;
-
     line-height:1.7;
 }
 
-/* ================= TEAM ================= */
+/* =========================================================
+   TEAM
+========================================================= */
 
 .team-section{
     padding-top:75px;
@@ -1231,13 +1125,10 @@ section{
 
 .team-grid{
     max-width:1100px;
-
     margin:auto;
 
     display:grid;
-
     grid-template-columns:1fr 1.5fr;
-
     gap:20px;
 }
 
@@ -1246,60 +1137,39 @@ section{
 
     border-radius:20px;
 
-    background:
-    linear-gradient(
-        145deg,
-        #11131ee8,
-        #08090ee8
-    );
-
+    background:linear-gradient(145deg,#11131e,#08090e);
     border:1px solid #292c3c;
 
     text-align:center;
 
     transition:.3s;
-
-    backdrop-filter:blur(8px);
 }
 
 .team-card:hover{
     transform:translateY(-6px);
-
     border-color:#00e5ff;
-
     box-shadow:0 15px 45px #00e5ff15;
 }
 
 .team-card.owner{
     border-color:#ff247f55;
-
-    background:
-    linear-gradient(
-        145deg,
-        #1a101be8,
-        #08090ee8
-    );
+    background:linear-gradient(145deg,#1a101b,#08090e);
 }
 
 .team-card.owner:hover{
     border-color:#ff247f;
-
     box-shadow:0 15px 45px #ff247f18;
 }
 
 .team-icon{
     font-size:42px;
-
     margin-bottom:12px;
 }
 
 .team-label{
     color:#ff247f;
-
     font:800 10px Orbitron;
-
     letter-spacing:4px;
-
     margin-bottom:10px;
 }
 
@@ -1309,23 +1179,18 @@ section{
 
 .team-card h3{
     font:800 24px Orbitron;
-
     margin-bottom:12px;
 }
 
 .team-card p{
     color:#777;
-
     font-size:10px;
 }
 
 .partner-list{
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:12px;
-
     margin-top:15px;
 }
 
@@ -1335,7 +1200,6 @@ section{
     border-radius:12px;
 
     background:#ffffff07;
-
     border:1px solid #252839;
 
     transition:.3s;
@@ -1343,27 +1207,22 @@ section{
 
 .partner:hover{
     border-color:#ff247f;
-
     transform:translateY(-4px);
 }
 
 .partner-icon{
     font-size:25px;
-
     margin-bottom:8px;
 }
 
 .partner strong{
     display:block;
-
     font:700 12px Orbitron;
-
     color:white;
 }
 
 .developer-box{
     max-width:1100px;
-
     margin:20px auto 0;
 
     padding:22px;
@@ -1372,41 +1231,30 @@ section{
 
     border-radius:15px;
 
-    background:
-    linear-gradient(
-        90deg,
-        #00e5ff0d,
-        #ff247f0d
-    );
-
+    background:linear-gradient(90deg,#00e5ff0d,#ff247f0d);
     border:1px solid #ffffff12;
 }
 
 .developer-box span{
     display:block;
-
     color:#666;
-
     font:700 9px Orbitron;
-
     letter-spacing:3px;
-
     margin-bottom:7px;
 }
 
 .developer-box strong{
     color:#00e5ff;
-
     font:800 15px Orbitron;
-
     text-shadow:0 0 12px #00e5ff55;
 }
 
-/* ================= YOUTUBE ================= */
+/* =========================================================
+   YOUTUBE
+========================================================= */
 
 .youtube{
     max-width:1050px;
-
     margin:auto;
 
     text-align:center;
@@ -1415,41 +1263,32 @@ section{
 
     border-radius:22px;
 
-    background:
-    linear-gradient(
-        135deg,
-        #ff00481f,
-        #191923f5
-    );
-
+    background:linear-gradient(135deg,#ff00481f,#191923f5);
     border:1px solid #ff32594d;
 }
 
 .youtube .icon{
     font-size:50px;
-
     margin-bottom:8px;
 }
 
 .youtube h2{
     font:700 29px Orbitron;
-
     margin-bottom:9px;
 }
 
 .youtube p{
     color:#999;
-
     font-size:12px;
-
     margin-bottom:23px;
 }
 
-/* ================= CTA ================= */
+/* =========================================================
+   CTA
+========================================================= */
 
 .cta{
     max-width:1050px;
-
     margin:auto;
 
     text-align:center;
@@ -1458,29 +1297,19 @@ section{
 
     border-radius:22px;
 
-    background:
-    linear-gradient(
-        135deg,
-        #00e5ff12,
-        #9b00ff14
-    );
-
+    background:linear-gradient(135deg,#00e5ff12,#9b00ff14);
     border:1px solid #292c3b;
 }
 
 .cta h2{
     font:700 30px Orbitron;
-
     margin-bottom:9px;
 }
 
 .cta p{
     color:#999;
-
     font-size:12px;
-
     line-height:1.8;
-
     margin-bottom:22px;
 }
 
@@ -1488,15 +1317,14 @@ section{
     margin-top:23px;
 
     color:#00e5ff;
-
     font-size:12px;
-
     line-height:2.1;
-
     font-weight:700;
 }
 
-/* ================= FOOTER ================= */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
     padding:35px 6%;
@@ -1516,15 +1344,12 @@ footer strong{
 
 footer a{
     color:#ff247f;
-
     text-decoration:none;
-
     font-weight:700;
 }
 
 .developer-credit{
     margin-top:12px;
-
     color:#777;
 }
 
@@ -1532,7 +1357,9 @@ footer a{
     color:#00e5ff;
 }
 
-/* ================= WHATSAPP FLOAT ================= */
+/* =========================================================
+   FLOATING WHATSAPP
+========================================================= */
 
 .whatsapp{
     position:fixed;
@@ -1546,13 +1373,11 @@ footer a{
     border-radius:50%;
 
     display:grid;
-
     place-items:center;
 
     text-decoration:none;
 
     background:#20d366;
-
     color:white;
 
     font-size:27px;
@@ -1572,25 +1397,24 @@ footer a{
 
 }
 
-/* ================= POPUP ================= */
+/* =========================================================
+   WHATSAPP POPUP
+========================================================= */
 
 .popup-overlay{
     position:fixed;
-
     inset:0;
 
     z-index:200;
 
     display:none;
-
     align-items:center;
     justify-content:center;
 
     padding:20px;
 
-    background:#000000b8;
-
-    backdrop-filter:blur(9px);
+    background:#000000cc;
+    backdrop-filter:blur(10px);
 }
 
 .popup-overlay.active{
@@ -1598,26 +1422,21 @@ footer a{
 }
 
 .whatsapp-popup{
-    width:min(420px,100%);
+    width:100%;
+    max-width:420px;
 
-    padding:27px;
+    padding:28px;
 
     border-radius:20px;
 
     background:
-    linear-gradient(
-        145deg,
-        #111522,
-        #07080e
-    );
+    linear-gradient(145deg,#111522,#07080d);
 
-    border:1px solid #20d36655;
+    border:1px solid #00e5ff45;
 
     box-shadow:
     0 25px 80px #000,
-    0 0 35px #20d36615;
-
-    position:relative;
+    0 0 35px #00e5ff15;
 
     animation:popupIn .25s ease;
 }
@@ -1637,20 +1456,15 @@ footer a{
 }
 
 .popup-close{
-    position:absolute;
+    float:right;
 
-    top:12px;
-    right:15px;
-
-    width:32px;
-    height:32px;
+    width:30px;
+    height:30px;
 
     border:0;
-
     border-radius:50%;
 
-    background:#ffffff0b;
-
+    background:#ffffff0d;
     color:#aaa;
 
     cursor:pointer;
@@ -1658,57 +1472,39 @@ footer a{
     font-size:18px;
 }
 
-.popup-close:hover{
-    background:#ff247f22;
-    color:#ff247f;
-}
-
 .popup-icon{
-    font-size:42px;
-
+    font-size:40px;
     text-align:center;
-
     margin-bottom:8px;
 }
 
 .whatsapp-popup h3{
     text-align:center;
-
-    font:800 21px Orbitron;
-
-    margin-bottom:7px;
+    font:800 20px Orbitron;
+    color:#00e5ff;
 }
 
-.popup-subtitle{
-    color:#777;
-
+.whatsapp-popup>p{
     text-align:center;
-
+    color:#777;
     font-size:10px;
-
-    line-height:1.6;
-
-    margin-bottom:20px;
+    margin:8px 0 20px;
 }
 
 .whatsapp-option{
     width:100%;
 
     display:flex;
-
     align-items:center;
-
     gap:12px;
 
+    margin:10px 0;
     padding:14px;
 
-    margin-top:10px;
+    border-radius:10px;
 
-    border-radius:12px;
-
-    border:1px solid #252a38;
-
-    background:#ffffff06;
+    background:#ffffff08;
+    border:1px solid #252839;
 
     color:white;
 
@@ -1720,59 +1516,48 @@ footer a{
 }
 
 .whatsapp-option:hover{
-    border-color:#20d366;
-
-    background:#20d3660c;
-
     transform:translateX(4px);
+    border-color:#20d366;
+    background:#20d3660d;
 }
 
-.whatsapp-option-icon{
-    width:40px;
-    height:40px;
+.wa-icon{
+    width:38px;
+    height:38px;
 
     display:grid;
-
     place-items:center;
 
     border-radius:50%;
 
-    background:#20d36618;
-
-    color:#20d366;
-
-    font-size:20px;
+    background:#20d366;
+    font-size:19px;
 }
 
-.whatsapp-option-text{
-    flex:1;
-}
-
-.whatsapp-option-text strong{
+.wa-info strong{
     display:block;
-
-    font-size:12px;
-
-    font-weight:800;
+    font:700 11px Orbitron;
 }
 
-.whatsapp-option-text span{
+.wa-info span{
     display:block;
-
-    color:#666;
-
+    color:#777;
     font-size:9px;
-
     margin-top:3px;
 }
 
-.whatsapp-arrow{
-    color:#20d366;
+.popup-note{
+    margin-top:16px;
 
-    font-size:20px;
+    text-align:center;
+
+    color:#555;
+    font-size:8px;
 }
 
-/* ================= RESPONSIVE ================= */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-width:950px){
 
@@ -1792,6 +1577,10 @@ footer a{
         grid-template-columns:1fr;
     }
 
+    .map-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
 }
 
 @media(max-width:750px){
@@ -1809,7 +1598,6 @@ footer a{
         display:flex;
 
         position:absolute;
-
         top:65px;
         left:0;
 
@@ -1819,11 +1607,9 @@ footer a{
 
         flex-direction:column;
 
-        background:#07080ef5;
+        background:#07080e;
 
         border-bottom:1px solid #222536;
-
-        backdrop-filter:blur(15px);
     }
 
     .tournament-grid,
@@ -1848,16 +1634,16 @@ footer a{
         grid-template-columns:1fr;
     }
 
+    .map-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .hud{
+        display:none;
+    }
+
     section{
         padding:75px 5%;
-    }
-
-    .gaming-road{
-        opacity:.18;
-    }
-
-    .mountain{
-        opacity:.45;
     }
 
 }
@@ -1884,8 +1670,12 @@ footer a{
         padding:15px;
     }
 
+    .map-grid{
+        grid-template-columns:1fr;
+    }
+
     .whatsapp-popup{
-        padding:23px 17px;
+        padding:22px;
     }
 
 }
@@ -1899,34 +1689,17 @@ footer a{
 
 <div class="gaming-scene">
 
-    <div class="neon-sun"></div>
-
-    <div class="mountain one"></div>
-    <div class="mountain two"></div>
-    <div class="mountain three"></div>
-
-    <div class="horizon"></div>
-
-    <div class="gaming-road"></div>
-
-    <div class="hud left">
-        SYSTEM ONLINE
-        <div class="hud-line"></div>
-        GAMING MOUNT
-    </div>
-
-    <div class="hud right">
-        BATTLE MODE
-        <div class="hud-line"></div>
-        READY
-    </div>
+    <div class="hud"></div>
+    <div class="hud-left"></div>
 
 </div>
 
 <div class="scanlines"></div>
 
 
-<!-- ================= NAVBAR ================= -->
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
 <nav class="navbar">
 
@@ -1937,30 +1710,13 @@ footer a{
     <div class="nav-links" id="navLinks">
 
         <a href="#home">HOME</a>
-
-        <a href="#tournaments">
-            TOURNAMENTS
-        </a>
-
-        <a href="#timings">
-            TIMINGS
-        </a>
-
-        <a href="#payment">
-            PAYMENT
-        </a>
-
-        <a href="#team">
-            TEAM
-        </a>
-
-        <a href="#join">
-            HOW TO JOIN
-        </a>
-
-        <a href="#live">
-            LIVE
-        </a>
+        <a href="#tournaments">TOURNAMENTS</a>
+        <a href="#matches">MAPS</a>
+        <a href="#timings">TIMINGS</a>
+        <a href="#payment">PAYMENT</a>
+        <a href="#team">TEAM</a>
+        <a href="#join">HOW TO JOIN</a>
+        <a href="#live">LIVE</a>
 
     </div>
 
@@ -1972,27 +1728,20 @@ footer a{
         🔴 LIVE
     </a>
 
-    <div
-        class="menu"
-        onclick="toggleMenu()"
-    >
+    <div class="menu" onclick="toggleMenu()">
         ☰
     </div>
 
 </nav>
 
 
-<!-- ================= HERO ================= -->
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-<section
-    class="hero"
-    id="home"
->
+<section class="hero" id="home">
 
-    <div
-        class="particles"
-        id="particles"
-    ></div>
+    <div class="particles" id="particles"></div>
 
     <div class="hero-content">
 
@@ -2002,9 +1751,7 @@ footer a{
 
         <h1>
             GAMING<br>
-            <span class="cyan">
-                MOUNT
-            </span>
+            <span class="cyan">MOUNT</span>
         </h1>
 
         <h2>
@@ -2012,10 +1759,10 @@ footer a{
         </h2>
 
         <p>
-            Welcome to Gaming Mount — your destination
-            for daily Free Fire tournaments, free lobbies
-            and competitive paid matches. Choose your
-            entry, grab your slot and prove your skills.
+            Welcome to Gaming Mount — your destination for
+            daily Free Fire tournaments, free lobbies and
+            competitive paid matches. Choose your entry,
+            grab your slot and prove your skills.
         </p>
 
         <div class="hero-buttons">
@@ -2025,6 +1772,13 @@ footer a{
                 class="btn btn-primary"
             >
                 🎮 VIEW TOURNAMENTS
+            </a>
+
+            <a
+                href="#join"
+                class="btn btn-outline"
+            >
+                ⚡ HOW TO JOIN
             </a>
 
             <a
@@ -2042,7 +1796,9 @@ footer a{
 </section>
 
 
-<!-- ================= STATS ================= -->
+<!-- =========================================================
+     STATS
+========================================================= -->
 
 <div class="stats">
 
@@ -2069,7 +1825,9 @@ footer a{
 </div>
 
 
-<!-- ================= TOURNAMENTS ================= -->
+<!-- =========================================================
+     TOURNAMENTS
+========================================================= -->
 
 <section id="tournaments">
 
@@ -2084,7 +1842,7 @@ footer a{
         </h2>
 
         <p>
-            12 slots • Daily matches • WhatsApp registration
+            12 slots • Daily matches • Back-to-back matches
         </p>
 
     </div>
@@ -2321,7 +2079,9 @@ footer a{
 </section>
 
 
-<!-- ================= FREE / PAID ================= -->
+<!-- =========================================================
+     FREE / PAID
+========================================================= -->
 
 <section>
 
@@ -2392,7 +2152,7 @@ footer a{
 
                 <li>₹12 / ₹15 / ₹20 / ₹40</li>
                 <li>12 Player Lobby</li>
-                <li>Daily 4 Matches</li>
+                <li>Back-to-Back Matches</li>
                 <li>Live Tournament Stream</li>
 
             </ul>
@@ -2411,7 +2171,220 @@ footer a{
 </section>
 
 
-<!-- ================= TIMINGS ================= -->
+<!-- =========================================================
+     MATCH MAPS
+========================================================= -->
+
+<section id="matches" class="map-section">
+
+    <div class="section-head">
+
+        <div class="kicker">
+            BATTLE ROYALE MAPS
+        </div>
+
+        <h2>
+            BACK TO BACK MATCHES
+        </h2>
+
+        <p>
+            Matches continuously run honge — no unnecessary gap.
+        </p>
+
+    </div>
+
+
+    <div class="match-mode">
+
+        <strong>
+            ⚡ 3 MATCH FORMAT
+        </strong>
+
+        <span>
+            Bermuda → Kalahari → Purgatory
+        </span>
+
+    </div>
+
+
+    <div class="map-grid">
+
+        <div class="map-card">
+
+            <div class="map-number">
+                MATCH 01
+            </div>
+
+            <div class="map-icon">
+                🌴
+            </div>
+
+            <h3>
+                BERMUDA
+            </h3>
+
+            <p>
+                FIRST BATTLE
+            </p>
+
+        </div>
+
+
+        <div class="map-card">
+
+            <div class="map-number">
+                MATCH 02
+            </div>
+
+            <div class="map-icon">
+                🏜️
+            </div>
+
+            <h3>
+                KALAHARI
+            </h3>
+
+            <p>
+                SECOND BATTLE
+            </p>
+
+        </div>
+
+
+        <div class="map-card">
+
+            <div class="map-number">
+                MATCH 03
+            </div>
+
+            <div class="map-icon">
+                🏞️
+            </div>
+
+            <h3>
+                PURGATORY
+            </h3>
+
+            <p>
+                THIRD BATTLE
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="match-mode" style="margin-top:35px;">
+
+        <strong>
+            🔥 4 MATCH FORMAT
+        </strong>
+
+        <span>
+            Bermuda → Kalahari → Purgatory → Solara
+        </span>
+
+    </div>
+
+
+    <div class="map-grid">
+
+        <div class="map-card">
+
+            <div class="map-number">
+                MATCH 01
+            </div>
+
+            <div class="map-icon">
+                🌴
+            </div>
+
+            <h3>
+                BERMUDA
+            </h3>
+
+            <p>
+                FIRST BATTLE
+            </p>
+
+        </div>
+
+
+        <div class="map-card">
+
+            <div class="map-number">
+                MATCH 02
+            </div>
+
+            <div class="map-icon">
+                🏜️
+            </div>
+
+            <h3>
+                KALAHARI
+            </h3>
+
+            <p>
+                SECOND BATTLE
+            </p>
+
+        </div>
+
+
+        <div class="map-card">
+
+            <div class="map-number">
+                MATCH 03
+            </div>
+
+            <div class="map-icon">
+                🏞️
+            </div>
+
+            <h3>
+                PURGATORY
+            </h3>
+
+            <p>
+                THIRD BATTLE
+            </p>
+
+        </div>
+
+
+        <div class="map-card">
+
+            <div class="map-number">
+                MATCH 04
+            </div>
+
+            <div class="map-icon">
+                ☀️
+            </div>
+
+            <h3>
+                SOLARA
+            </h3>
+
+            <p>
+                FINAL BATTLE
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="back-to-back">
+        ⚡ BACK TO BACK MATCHES • STAY READY • NO LONG BREAKS ⚡
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TIMINGS
+========================================================= -->
 
 <section id="timings">
 
@@ -2463,7 +2436,9 @@ footer a{
 </section>
 
 
-<!-- ================= PAYMENT ================= -->
+<!-- =========================================================
+     PAYMENT
+========================================================= -->
 
 <section id="payment">
 
@@ -2563,6 +2538,8 @@ footer a{
             </div>
 
 
+            <!-- QR -->
+
             <div class="qr-container">
 
                 <div class="qr-title">
@@ -2603,14 +2580,16 @@ footer a{
 </section>
 
 
-<!-- ================= HOW TO JOIN ================= -->
+<!-- =========================================================
+     HOW TO JOIN
+========================================================= -->
 
-<section id="join">
+<section id="join" class="join-section">
 
     <div class="section-head">
 
         <div class="kicker">
-            SIMPLE PROCESS
+            EASY REGISTRATION
         </div>
 
         <h2>
@@ -2618,7 +2597,7 @@ footer a{
         </h2>
 
         <p>
-            Gaming Mount lobby join karna sirf 3 simple steps hai.
+            Gaming Mount tournament join karna simple hai.
         </p>
 
     </div>
@@ -2637,8 +2616,8 @@ footer a{
             </h3>
 
             <p>
-                Apni favourite Free Fire lobby select karein
-                aur entry fee check karein.
+                Starter, Pro, Elite ya Champion
+                lobby mein se apni preferred lobby select karo.
             </p>
 
         </div>
@@ -2651,12 +2630,13 @@ footer a{
             </div>
 
             <h3>
-                MAKE PAYMENT
+                BOOK YOUR SLOT
             </h3>
 
             <p>
-                QR code scan karein ya Pay Now button se
-                apne UPI app mein payment complete karein.
+                Book Slot button par click karo aur
+                available WhatsApp number choose karke
+                registration message bhejo.
             </p>
 
         </div>
@@ -2669,12 +2649,66 @@ footer a{
             </div>
 
             <h3>
+                MAKE PAYMENT
+            </h3>
+
+            <p>
+                QR code scan karo ya Pay Now button se
+                available UPI payment app open karo.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <h3>
                 SEND SCREENSHOT
             </h3>
 
             <p>
-                Payment screenshot WhatsApp par bhejein
-                aur apna slot confirm karwayein.
+                Payment complete hone ke baad screenshot
+                WhatsApp par send karo.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                05
+            </div>
+
+            <h3>
+                GET SLOT
+            </h3>
+
+            <p>
+                Team payment verify karke tumhe
+                slot aur match details provide karegi.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                06
+            </div>
+
+            <h3>
+                PLAY BACK-TO-BACK
+            </h3>
+
+            <p>
+                Room details milne ke baad ready raho
+                aur back-to-back matches mein dominate karo.
             </p>
 
         </div>
@@ -2684,12 +2718,11 @@ footer a{
 </section>
 
 
-<!-- ================= TEAM ================= -->
+<!-- =========================================================
+     TEAM
+========================================================= -->
 
-<section
-    id="team"
-    class="team-section"
->
+<section id="team" class="team-section">
 
     <div class="section-head">
 
@@ -2807,7 +2840,9 @@ footer a{
 </section>
 
 
-<!-- ================= YOUTUBE ================= -->
+<!-- =========================================================
+     YOUTUBE
+========================================================= -->
 
 <section id="live">
 
@@ -2839,7 +2874,9 @@ footer a{
 </section>
 
 
-<!-- ================= FINAL CTA ================= -->
+<!-- =========================================================
+     FINAL CTA
+========================================================= -->
 
 <section>
 
@@ -2872,9 +2909,9 @@ footer a{
 
             🎟️ Slot Booking:
             +91 93079 12119
-            <br>
+            •
             +91 92086 05534
-            <br>
+            •
             +91 83039 23306
 
         </div>
@@ -2884,7 +2921,9 @@ footer a{
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
@@ -2920,7 +2959,9 @@ footer a{
 </footer>
 
 
-<!-- ================= FLOATING WHATSAPP ================= -->
+<!-- =========================================================
+     FLOATING WHATSAPP
+========================================================= -->
 
 <a
     href="#"
@@ -2932,7 +2973,9 @@ footer a{
 </a>
 
 
-<!-- ================= WHATSAPP POPUP ================= -->
+<!-- =========================================================
+     WHATSAPP SELECTOR POPUP
+========================================================= -->
 
 <div
     class="popup-overlay"
@@ -2943,7 +2986,7 @@ footer a{
 
         <button
             class="popup-close"
-            id="popupClose"
+            onclick="closeWhatsAppPopup()"
         >
             ×
         </button>
@@ -2956,9 +2999,9 @@ footer a{
             CHOOSE WHATSAPP
         </h3>
 
-        <p class="popup-subtitle">
+        <p>
             Slot booking ke liye kisi bhi available
-            WhatsApp number ko select karein.
+            WhatsApp number ko choose karein.
         </p>
 
 
@@ -2966,27 +3009,23 @@ footer a{
 
         <button
             class="whatsapp-option"
-            data-number="919307912119"
+            onclick="openWhatsApp('919307912119')"
         >
 
-            <div class="whatsapp-option-icon">
-                📱
+            <div class="wa-icon">
+                💬
             </div>
 
-            <div class="whatsapp-option-text">
+            <div class="wa-info">
 
                 <strong>
-                    +91 93079 12119
+                    SLOT BOOKING 01
                 </strong>
 
                 <span>
-                    Slot Booking
+                    +91 93079 12119
                 </span>
 
-            </div>
-
-            <div class="whatsapp-arrow">
-                ›
             </div>
 
         </button>
@@ -2996,27 +3035,23 @@ footer a{
 
         <button
             class="whatsapp-option"
-            data-number="919208605534"
+            onclick="openWhatsApp('919208605534')"
         >
 
-            <div class="whatsapp-option-icon">
-                📱
+            <div class="wa-icon">
+                💬
             </div>
 
-            <div class="whatsapp-option-text">
+            <div class="wa-info">
 
                 <strong>
-                    +91 92086 05534
+                    SLOT BOOKING 02
                 </strong>
 
                 <span>
-                    Slot Booking
+                    +91 92086 05534
                 </span>
 
-            </div>
-
-            <div class="whatsapp-arrow">
-                ›
             </div>
 
         </button>
@@ -3026,155 +3061,114 @@ footer a{
 
         <button
             class="whatsapp-option"
-            data-number="918303923306"
+            onclick="openWhatsApp('918303923306')"
         >
 
-            <div class="whatsapp-option-icon">
-                📱
+            <div class="wa-icon">
+                💬
             </div>
 
-            <div class="whatsapp-option-text">
+            <div class="wa-info">
 
                 <strong>
-                    +91 83039 23306
+                    SLOT BOOKING 03
                 </strong>
 
                 <span>
-                    Slot Booking
+                    +91 83039 23306
                 </span>
 
             </div>
 
-            <div class="whatsapp-arrow">
-                ›
-            </div>
-
         </button>
+
+
+        <div class="popup-note">
+            Same booking message selected WhatsApp number par automatically jayega.
+        </div>
 
     </div>
 
 </div>
 
 
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
 <script>
 
-/* =====================================================
-   WHATSAPP SLOT BOOKING POPUP
-===================================================== */
-
-const whatsappPopup =
-document.getElementById("whatsappPopup");
-
-const popupClose =
-document.getElementById("popupClose");
+/* =========================================================
+   WHATSAPP SELECTOR
+========================================================= */
 
 let selectedMessage =
-"Hello Gaming Mount! I want to book a tournament slot. Please send me today's available tournaments.";
+"Hello Gaming Mount! I want to book a tournament slot.";
 
+const popup =
+document.getElementById("whatsappPopup");
 
-/* ALL SLOT BOOK BUTTONS */
 
 document
 .querySelectorAll(".slot-book")
 .forEach(button => {
 
-    button.addEventListener(
-        "click",
-        function(e){
+    button.addEventListener("click", function(e){
 
-            e.preventDefault();
+        e.preventDefault();
 
-            selectedMessage =
-            button.dataset.message ||
-            "Hello Gaming Mount! I want to book a tournament slot.";
+        selectedMessage =
+        button.dataset.message ||
+        "Hello Gaming Mount! I want to book a tournament slot.";
 
-            whatsappPopup.classList.add("active");
+        popup.classList.add("active");
 
-        }
-    );
+    });
 
 });
 
 
-/* SELECT WHATSAPP NUMBER */
+function closeWhatsAppPopup(){
 
-document
-.querySelectorAll(".whatsapp-option")
-.forEach(option => {
+    popup.classList.remove("active");
 
-    option.addEventListener(
-        "click",
-        function(){
+}
 
-            const number =
-            option.dataset.number;
 
-            const whatsappURL =
-            "https://wa.me/" +
-            number +
-            "?text=" +
-            encodeURIComponent(selectedMessage);
+function openWhatsApp(number){
 
-            window.open(
-                whatsappURL,
-                "_blank"
-            );
+    const whatsappURL =
+    "https://wa.me/" +
+    number +
+    "?text=" +
+    encodeURIComponent(selectedMessage);
 
-            whatsappPopup.classList.remove("active");
-
-        }
+    window.open(
+        whatsappURL,
+        "_blank"
     );
+
+    closeWhatsAppPopup();
+
+}
+
+
+/* Close popup when clicking outside */
+
+popup.addEventListener("click", function(e){
+
+    if(e.target === popup){
+
+        closeWhatsAppPopup();
+
+    }
 
 });
 
 
-/* CLOSE POPUP */
-
-popupClose.addEventListener(
-    "click",
-    function(){
-
-        whatsappPopup.classList.remove("active");
-
-    }
-);
-
-
-/* CLOSE WHEN CLICKING OUTSIDE */
-
-whatsappPopup.addEventListener(
-    "click",
-    function(e){
-
-        if(e.target === whatsappPopup){
-
-            whatsappPopup.classList.remove("active");
-
-        }
-
-    }
-);
-
-
-/* ESCAPE KEY */
-
-document.addEventListener(
-    "keydown",
-    function(e){
-
-        if(e.key === "Escape"){
-
-            whatsappPopup.classList.remove("active");
-
-        }
-
-    }
-);
-
-
-/* =====================================================
+/* =========================================================
    MOBILE MENU
-===================================================== */
+========================================================= */
 
 function toggleMenu(){
 
@@ -3205,12 +3199,13 @@ document
 });
 
 
-/* =====================================================
+/* =========================================================
    GAMING PARTICLES
-===================================================== */
+========================================================= */
 
 const particles =
 document.getElementById("particles");
+
 
 for(let i = 0; i < 70; i++){
 
@@ -3239,18 +3234,21 @@ for(let i = 0; i < 70; i++){
 }
 
 
-/* =====================================================
-   PREVENT POPUP FROM STAYING OPEN ON PAGE CHANGE
-===================================================== */
+/* =========================================================
+   ESC KEY CLOSE POPUP
+========================================================= */
 
-window.addEventListener(
-    "pageshow",
-    function(){
+document.addEventListener(
+"keydown",
+function(e){
 
-        whatsappPopup.classList.remove("active");
+    if(e.key === "Escape"){
+
+        closeWhatsAppPopup();
 
     }
-);
+
+});
 
 </script>
 
