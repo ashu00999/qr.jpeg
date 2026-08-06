@@ -1,0 +1,1941 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gaming Mount | Free Fire Esports</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Poppins,sans-serif;
+    background:#050509;
+    color:white;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    background:
+    radial-gradient(circle at 10% 15%,#00e5ff25,transparent 28%),
+    radial-gradient(circle at 90% 20%,#ff006625,transparent 30%),
+    radial-gradient(circle at 50% 90%,#7900ff20,transparent 35%),
+    #050509;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    opacity:.05;
+    background-image:
+    linear-gradient(#fff 1px,transparent 1px),
+    linear-gradient(90deg,#fff 1px,transparent 1px);
+    background-size:55px 55px;
+}
+
+.scanlines{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    pointer-events:none;
+    opacity:.025;
+    background:repeating-linear-gradient(
+        to bottom,
+        transparent 0 3px,
+        #fff 4px
+    );
+}
+
+/* NAVBAR */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:50;
+    padding:15px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#04040ddb;
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid #00e5ff29;
+}
+
+.logo{
+    font:900 21px Orbitron;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#00e5ff;
+    text-shadow:
+    0 0 10px #00e5ff,
+    0 0 25px #00e5ff;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#c6c6cf;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:#00e5ff;
+}
+
+.nav-live{
+    color:white;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:7px;
+    background:linear-gradient(90deg,#ff075f,#9500ff);
+    font-size:11px;
+    font-weight:800;
+}
+
+.menu{
+    display:none;
+    font-size:27px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding:145px 6% 85px;
+    overflow:hidden;
+}
+
+.hero-content{
+    max-width:950px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border:1px solid #00e5ff66;
+    border-radius:50px;
+    background:#00e5ff0f;
+    color:#00e5ff;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.hero h1{
+    font:900 clamp(50px,10vw,105px)/.94 Orbitron;
+    letter-spacing:-4px;
+    margin:24px 0 18px;
+}
+
+.cyan{
+    color:#00e5ff;
+    text-shadow:
+    0 0 12px #00e5ff,
+    0 0 45px #00e5ff8c;
+}
+
+.hero h2{
+    font:700 clamp(15px,3vw,24px) Orbitron;
+    letter-spacing:3px;
+    color:#ddd;
+}
+
+.hero p{
+    max-width:720px;
+    margin:20px auto;
+    color:#999;
+    font-size:14px;
+    line-height:1.85;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:28px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px 21px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:800;
+    transition:.25s;
+    cursor:pointer;
+    border:0;
+}
+
+.btn-primary{
+    background:#00e5ff;
+    color:#030309;
+    box-shadow:0 0 22px #00e5ff59;
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 35px #00e5ffa6;
+}
+
+.btn-outline{
+    background:#ffffff08;
+    border:1px solid #363846;
+    color:white;
+}
+
+.btn-outline:hover{
+    border-color:#ff247f;
+    color:#ff247f;
+    transform:translateY(-4px);
+}
+
+/* PARTICLES */
+
+.particles{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.particle{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#00e5ff;
+    box-shadow:0 0 10px #00e5ff;
+    animation:rise linear infinite;
+}
+
+@keyframes rise{
+    from{
+        transform:translateY(105vh);
+        opacity:0;
+    }
+    20%{
+        opacity:.8;
+    }
+    to{
+        transform:translateY(-10vh);
+        opacity:0;
+    }
+}
+
+/* STATS */
+
+.stats{
+    max-width:1100px;
+    margin:-35px auto 0;
+    padding:0 6%;
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:13px;
+}
+
+.stat{
+    padding:20px;
+    text-align:center;
+    background:#0d0e17d1;
+    border:1px solid #25283a;
+    border-radius:13px;
+    transition:.3s;
+}
+
+.stat:hover{
+    transform:translateY(-5px);
+    border-color:#00e5ff;
+}
+
+.stat strong{
+    display:block;
+    font:800 25px Orbitron;
+    color:#00e5ff;
+}
+
+.stat span{
+    display:block;
+    color:#666;
+    font-size:9px;
+    margin-top:5px;
+    letter-spacing:1px;
+}
+
+/* SECTION */
+
+section{
+    padding:90px 6%;
+}
+
+.section-head{
+    text-align:center;
+    margin-bottom:42px;
+}
+
+.kicker{
+    font:800 10px Orbitron;
+    color:#ff247f;
+    letter-spacing:4px;
+}
+
+.section-head h2{
+    font:800 clamp(28px,5vw,44px) Orbitron;
+    margin:9px 0;
+}
+
+.section-head p{
+    color:#858591;
+    font-size:12px;
+}
+
+/* TOURNAMENT */
+
+.tournament-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+
+.tournament-card{
+    position:relative;
+    overflow:hidden;
+    padding:23px 20px;
+    border-radius:16px;
+    background:linear-gradient(145deg,#151725,#090a10);
+    border:1px solid #272a3b;
+    transition:.3s;
+}
+
+.tournament-card:hover{
+    transform:translateY(-8px);
+    border-color:#00e5ff;
+    box-shadow:0 18px 45px #00e5ff17;
+}
+
+.tournament-card.premium:hover{
+    border-color:#ff247f;
+}
+
+.card-glow{
+    position:absolute;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    right:-60px;
+    top:-60px;
+    background:#00e5ff;
+    filter:blur(70px);
+    opacity:.1;
+}
+
+.premium .card-glow{
+    background:#ff247f;
+}
+
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:17px;
+}
+
+.entry-icon{
+    font-size:28px;
+}
+
+.status{
+    padding:6px 9px;
+    border-radius:5px;
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:1px;
+    color:#00e5ff;
+    background:#00e5ff14;
+}
+
+.premium .status{
+    color:#ff247f;
+    background:#ff247f14;
+}
+
+.tournament-card h3{
+    font:700 18px Orbitron;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#777;
+    font-size:11px;
+    line-height:1.6;
+    min-height:36px;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin:18px 0;
+}
+
+.info-box{
+    background:#ffffff09;
+    padding:10px;
+    border-radius:7px;
+}
+
+.info-box small{
+    display:block;
+    color:#666;
+    font-size:8px;
+    letter-spacing:1px;
+}
+
+.info-box b{
+    display:block;
+    font-size:13px;
+    margin-top:3px;
+}
+
+.prize{
+    padding:12px;
+    margin-bottom:17px;
+    text-align:center;
+    border-radius:8px;
+    background:linear-gradient(90deg,#00e5ff12,#ff247f12);
+    border:1px solid #ffffff0f;
+}
+
+.prize small{
+    display:block;
+    color:#777;
+    font-size:8px;
+}
+
+.prize strong{
+    font:800 21px Orbitron;
+}
+
+.tournament-card .btn{
+    width:100%;
+}
+
+/* FREE / PAID */
+
+.split{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.feature-box{
+    padding:32px;
+    border-radius:19px;
+    background:linear-gradient(135deg,#00e5ff12,#0a0b12f5);
+    border:1px solid #00e5ff3b;
+}
+
+.feature-box.paid{
+    background:linear-gradient(135deg,#ff247f12,#0a0b12f5);
+    border-color:#ff247f3b;
+}
+
+.feature-box h3{
+    font:700 25px Orbitron;
+    margin-bottom:10px;
+}
+
+.feature-box p{
+    color:#999;
+    font-size:12px;
+    line-height:1.75;
+    margin-bottom:20px;
+}
+
+.feature-list{
+    list-style:none;
+    margin-bottom:22px;
+}
+
+.feature-list li{
+    color:#bbb;
+    font-size:11px;
+    margin:10px 0;
+}
+
+.feature-list li:before{
+    content:"✓";
+    color:#00e5ff;
+    font-weight:900;
+    margin-right:10px;
+}
+
+.paid .feature-list li:before{
+    color:#ff247f;
+}
+
+/* TIMINGS */
+
+.timing-grid{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.time-card{
+    text-align:center;
+    padding:26px 12px;
+    border-radius:14px;
+    background:#0c0d15;
+    border:1px solid #242737;
+    transition:.3s;
+}
+
+.time-card:hover{
+    transform:translateY(-6px);
+    border-color:#ff247f;
+}
+
+.time{
+    font:800 22px Orbitron;
+    color:#00e5ff;
+}
+
+.time-card h3{
+    font-size:11px;
+    margin-top:8px;
+}
+
+.time-card span{
+    display:block;
+    color:#666;
+    font-size:8px;
+    margin-top:5px;
+    letter-spacing:1px;
+}
+
+/* PAYMENT */
+
+.payment-box{
+    max-width:1100px;
+    margin:auto;
+    padding:34px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#00e5ff12,#0a0a12f7);
+    border:1px solid #00e5ff40;
+    box-shadow:0 20px 60px #00000059;
+}
+
+.payment-content{
+    display:grid;
+    grid-template-columns:1fr 390px;
+    gap:45px;
+    align-items:center;
+}
+
+.payment-badge{
+    display:inline-block;
+    padding:7px 13px;
+    border-radius:30px;
+    color:#00e5ff;
+    background:#00e5ff12;
+    border:1px solid #00e5ff33;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.payment-left h3{
+    font:700 32px Orbitron;
+    margin:15px 0 10px;
+}
+
+.payment-left>p{
+    color:#92929e;
+    font-size:12px;
+    line-height:1.8;
+}
+
+.payment-fees{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin:23px 0;
+}
+
+.payment-fees div{
+    padding:12px 7px;
+    text-align:center;
+    border-radius:8px;
+    background:#ffffff09;
+    border:1px solid #262938;
+}
+
+.payment-fees span{
+    display:block;
+    color:#00e5ff;
+    font:800 17px Orbitron;
+}
+
+.payment-fees small{
+    display:block;
+    color:#666;
+    font-size:7px;
+    margin-top:4px;
+    letter-spacing:1px;
+}
+
+.payment-steps p{
+    color:#888;
+    font-size:10px;
+    margin:10px 0;
+}
+
+.payment-steps b{
+    display:inline-grid;
+    place-items:center;
+    width:24px;
+    height:24px;
+    margin-right:8px;
+    border-radius:50%;
+    color:#050509;
+    background:#00e5ff;
+    font-size:8px;
+}
+
+/* QR */
+
+.qr-container{
+    text-align:center;
+    padding:22px;
+    border-radius:18px;
+    background:#00000057;
+    border:1px solid #282b3a;
+}
+
+.qr-title{
+    font:700 13px Orbitron;
+    color:#00e5ff;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.qr-frame{
+    max-width:330px;
+    margin:auto;
+    padding:7px;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 0 28px #00e5ff2e;
+}
+
+.qr-image{
+    width:100%;
+    height:auto;
+    display:block;
+    border-radius:7px;
+}
+
+.qr-scan{
+    font:800 12px Orbitron;
+    margin-top:15px;
+    letter-spacing:2px;
+}
+
+.qr-note{
+    color:#666;
+    font-size:8px;
+    margin-top:5px;
+    letter-spacing:1px;
+}
+
+/* HOW TO JOIN */
+
+.steps{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
+}
+
+.step{
+    text-align:center;
+    padding:28px 18px;
+    background:#0c0d15;
+    border:1px solid #242737;
+    border-radius:15px;
+}
+
+.step-number{
+    width:50px;
+    height:50px;
+    margin:0 auto 15px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    font:700 12px Orbitron;
+    color:#00e5ff;
+    border:1px solid #00e5ff;
+}
+
+.step h3{
+    font:700 13px Orbitron;
+    margin-bottom:7px;
+}
+
+.step p{
+    color:#777;
+    font-size:10px;
+    line-height:1.7;
+}
+
+/* YOUTUBE */
+
+.youtube{
+    max-width:1050px;
+    margin:auto;
+    text-align:center;
+    padding:58px 25px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#ff00481f,#191923f5);
+    border:1px solid #ff32594d;
+}
+
+.youtube .icon{
+    font-size:50px;
+    margin-bottom:8px;
+}
+
+.youtube h2{
+    font:700 29px Orbitron;
+    margin-bottom:9px;
+}
+
+.youtube p{
+    color:#999;
+    font-size:12px;
+    margin-bottom:23px;
+}
+
+/* CTA */
+
+.cta{
+    max-width:1050px;
+    margin:auto;
+    text-align:center;
+    padding:60px 25px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#00e5ff12,#9b00ff14);
+    border:1px solid #292c3b;
+}
+
+.cta h2{
+    font:700 30px Orbitron;
+    margin-bottom:9px;
+}
+
+.cta p{
+    color:#999;
+    font-size:12px;
+    line-height:1.8;
+    margin-bottom:22px;
+}
+
+.contact{
+    margin-top:23px;
+    color:#00e5ff;
+    font-size:12px;
+    line-height:2.1;
+    font-weight:700;
+}
+
+/* FOOTER */
+
+footer{
+    padding:35px 6%;
+    text-align:center;
+    color:#555;
+    border-top:1px solid #1c1e2a;
+    font-size:10px;
+}
+
+footer strong{
+    color:#00e5ff;
+}
+
+footer a{
+    color:#ff247f;
+    text-decoration:none;
+    font-weight:700;
+}
+
+/* FLOATING WHATSAPP */
+
+.whatsapp{
+    position:fixed;
+    right:21px;
+    bottom:21px;
+    width:59px;
+    height:59px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    text-decoration:none;
+    background:#20d366;
+    color:white;
+    font-size:27px;
+    z-index:40;
+    box-shadow:0 0 20px #20d36680;
+    animation:float 2.5s ease-in-out infinite;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+    .tournament-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .payment-content{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:750px){
+
+    .nav-links,
+    .nav-live{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .nav-links.mobile{
+        display:flex;
+        position:absolute;
+        top:65px;
+        left:0;
+        width:100%;
+        padding:20px 6%;
+        flex-direction:column;
+        background:#07080e;
+        border-bottom:1px solid #222536;
+    }
+
+    .tournament-grid,
+    .split,
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .timing-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .payment-box{
+        padding:22px;
+    }
+
+    .payment-fees{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    section{
+        padding:75px 5%;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .hero h1{
+        font-size:46px;
+    }
+
+    .hero{
+        padding-top:125px;
+    }
+
+    .hero p{
+        font-size:12px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .qr-container{
+        padding:15px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="scanlines"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        GAMING <span>MOUNT</span>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+
+        <a href="#home">HOME</a>
+        <a href="#tournaments">TOURNAMENTS</a>
+        <a href="#timings">TIMINGS</a>
+        <a href="#payment">PAYMENT</a>
+        <a href="#join">HOW TO JOIN</a>
+        <a href="#live">LIVE</a>
+
+    </div>
+
+    <a
+        class="nav-live"
+        href="https://www.youtube.com/@Anurag-x9o4v"
+        target="_blank"
+    >
+        🔴 LIVE
+    </a>
+
+    <div class="menu" onclick="toggleMenu()">
+        ☰
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="particles" id="particles"></div>
+
+    <div class="hero-content">
+
+        <span class="badge">
+            FREE FIRE • ESPORTS • DAILY TOURNAMENTS
+        </span>
+
+        <h1>
+            GAMING<br>
+            <span class="cyan">MOUNT</span>
+        </h1>
+
+        <h2>
+            ENTER THE BATTLE. OWN THE LOBBY.
+        </h2>
+
+        <p>
+            Welcome to Gaming Mount — your destination for
+            daily Free Fire tournaments, free lobbies and
+            competitive paid matches. Choose your entry,
+            grab your slot and prove your skills.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#tournaments" class="btn btn-primary">
+                🎮 VIEW TOURNAMENTS
+            </a>
+
+            <a
+                href="https://www.youtube.com/@Anurag-x9o4v"
+                target="_blank"
+                class="btn btn-outline"
+            >
+                ▶ WATCH LIVE
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+    <div class="stat">
+        <strong>12</strong>
+        <span>TOTAL SLOTS</span>
+    </div>
+
+    <div class="stat">
+        <strong>4×</strong>
+        <span>DAILY MATCHES</span>
+    </div>
+
+    <div class="stat">
+        <strong>₹12+</strong>
+        <span>ENTRY STARTS</span>
+    </div>
+
+    <div class="stat">
+        <strong>LIVE</strong>
+        <span>YOUTUBE STREAM</span>
+    </div>
+
+</div>
+
+
+<!-- TOURNAMENTS -->
+
+<section id="tournaments">
+
+    <div class="section-head">
+
+        <div class="kicker">
+            CHOOSE YOUR BATTLE
+        </div>
+
+        <h2>
+            PAID LOBBIES
+        </h2>
+
+        <p>
+            12 slots • Daily matches • WhatsApp registration
+        </p>
+
+    </div>
+
+
+    <div class="tournament-grid">
+
+        <!-- ₹12 -->
+
+        <div class="tournament-card">
+
+            <div class="card-glow"></div>
+
+            <div class="card-top">
+
+                <div class="entry-icon">
+                    🟢
+                </div>
+
+                <span class="status">
+                    OPEN
+                </span>
+
+            </div>
+
+            <h3>
+                STARTER LOBBY
+            </h3>
+
+            <p class="subtitle">
+                Perfect for players who want to start competing.
+            </p>
+
+            <div class="info">
+
+                <div class="info-box">
+                    <small>ENTRY FEE</small>
+                    <b>₹12</b>
+                </div>
+
+                <div class="info-box">
+                    <small>SLOTS</small>
+                    <b>12</b>
+                </div>
+
+            </div>
+
+            <div class="prize">
+
+                <small>PRIZE POOL</small>
+
+                <strong>
+                    ₹100
+                </strong>
+
+            </div>
+
+            <a
+                href="#"
+                class="btn btn-primary slot-book"
+                data-message="Hello Gaming Mount! I want to book a ₹12 Starter Lobby slot. Please send me today's available slots and match details."
+            >
+                BOOK ₹12 SLOT
+            </a>
+
+        </div>
+
+
+        <!-- ₹15 -->
+
+        <div class="tournament-card">
+
+            <div class="card-glow"></div>
+
+            <div class="card-top">
+
+                <div class="entry-icon">
+                    🔵
+                </div>
+
+                <span class="status">
+                    OPEN
+                </span>
+
+            </div>
+
+            <h3>
+                PRO LOBBY
+            </h3>
+
+            <p class="subtitle">
+                Step up and compete against stronger players.
+            </p>
+
+            <div class="info">
+
+                <div class="info-box">
+                    <small>ENTRY FEE</small>
+                    <b>₹15</b>
+                </div>
+
+                <div class="info-box">
+                    <small>SLOTS</small>
+                    <b>12</b>
+                </div>
+
+            </div>
+
+            <div class="prize">
+
+                <small>PRIZE POOL</small>
+
+                <strong>
+                    ₹130
+                </strong>
+
+            </div>
+
+            <a
+                href="#"
+                class="btn btn-primary slot-book"
+                data-message="Hello Gaming Mount! I want to book a ₹15 Pro Lobby slot. Please send me today's available slots and match details."
+            >
+                BOOK ₹15 SLOT
+            </a>
+
+        </div>
+
+
+        <!-- ₹20 -->
+
+        <div class="tournament-card premium">
+
+            <div class="card-glow"></div>
+
+            <div class="card-top">
+
+                <div class="entry-icon">
+                    🟣
+                </div>
+
+                <span class="status">
+                    HOT
+                </span>
+
+            </div>
+
+            <h3>
+                ELITE LOBBY
+            </h3>
+
+            <p class="subtitle">
+                High intensity competition for serious players.
+            </p>
+
+            <div class="info">
+
+                <div class="info-box">
+                    <small>ENTRY FEE</small>
+                    <b>₹20</b>
+                </div>
+
+                <div class="info-box">
+                    <small>SLOTS</small>
+                    <b>12</b>
+                </div>
+
+            </div>
+
+            <div class="prize">
+
+                <small>PRIZE POOL</small>
+
+                <strong>
+                    ₹175
+                </strong>
+
+            </div>
+
+            <a
+                href="#"
+                class="btn btn-outline slot-book"
+                data-message="Hello Gaming Mount! I want to book a ₹20 Elite Lobby slot. Please send me today's available slots and match details."
+            >
+                BOOK ₹20 SLOT
+            </a>
+
+        </div>
+
+
+        <!-- ₹40 -->
+
+        <div class="tournament-card premium">
+
+            <div class="card-glow"></div>
+
+            <div class="card-top">
+
+                <div class="entry-icon">
+                    🔥
+                </div>
+
+                <span class="status">
+                    PREMIUM
+                </span>
+
+            </div>
+
+            <h3>
+                CHAMPION LOBBY
+            </h3>
+
+            <p class="subtitle">
+                Premium battle for players ready to dominate.
+            </p>
+
+            <div class="info">
+
+                <div class="info-box">
+                    <small>ENTRY FEE</small>
+                    <b>₹40</b>
+                </div>
+
+                <div class="info-box">
+                    <small>SLOTS</small>
+                    <b>12</b>
+                </div>
+
+            </div>
+
+            <div class="prize">
+
+                <small>PRIZE POOL</small>
+
+                <strong>
+                    ₹350
+                </strong>
+
+            </div>
+
+            <a
+                href="#"
+                class="btn btn-outline slot-book"
+                data-message="Hello Gaming Mount! I want to book a ₹40 Champion Lobby slot. Please send me today's available slots and match details."
+            >
+                BOOK ₹40 SLOT
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FREE / PAID -->
+
+<section>
+
+    <div class="section-head">
+
+        <div class="kicker">
+            GAMING MOUNT
+        </div>
+
+        <h2>
+            PLAY YOUR WAY
+        </h2>
+
+        <p>
+            Free matches se start karo ya premium competition mein enter karo.
+        </p>
+
+    </div>
+
+
+    <div class="split">
+
+        <div class="feature-box">
+
+            <h3>
+                🆓 FREE LOBBY
+            </h3>
+
+            <p>
+                No entry fee. Apne skills test karo,
+                competition enjoy karo aur Gaming Mount
+                community ka part bano.
+            </p>
+
+            <ul class="feature-list">
+
+                <li>₹0 Entry Fee</li>
+                <li>12 Player Lobby</li>
+                <li>Daily Matches</li>
+                <li>WhatsApp Registration</li>
+
+            </ul>
+
+            <a
+                href="#"
+                class="btn btn-primary slot-book"
+                data-message="Hello Gaming Mount! I want to join today's FREE lobby. Please send me the available slot and match details."
+            >
+                JOIN FREE LOBBY
+            </a>
+
+        </div>
+
+
+        <div class="feature-box paid">
+
+            <h3>
+                💎 PAID LOBBY
+            </h3>
+
+            <p>
+                Competitive paid matches with different
+                entry levels. Choose your lobby and fight
+                for the prize pool.
+            </p>
+
+            <ul class="feature-list">
+
+                <li>₹12 / ₹15 / ₹20 / ₹40</li>
+                <li>12 Player Lobby</li>
+                <li>Daily 4 Matches</li>
+                <li>Live Tournament Stream</li>
+
+            </ul>
+
+            <a
+                href="#tournaments"
+                class="btn btn-outline"
+            >
+                VIEW PAID LOBBIES
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TIMINGS -->
+
+<section id="timings">
+
+    <div class="section-head">
+
+        <div class="kicker">
+            DAILY SCHEDULE
+        </div>
+
+        <h2>
+            FOUR BATTLES EVERY DAY
+        </h2>
+
+        <p>
+            Apni convenient timing choose karo.
+        </p>
+
+    </div>
+
+
+    <div class="timing-grid">
+
+        <div class="time-card">
+
+            <div class="time">
+                12:00 PM
+            </div>
+
+            <h3>
+                AFTERNOON BATTLE
+            </h3>
+
+            <span>
+                DAILY
+            </span>
+
+        </div>
+
+
+        <div class="time-card">
+
+            <div class="time">
+                3:00 PM
+            </div>
+
+            <h3>
+                AFTERNOON RUSH
+            </h3>
+
+            <span>
+                DAILY
+            </span>
+
+        </div>
+
+
+        <div class="time-card">
+
+            <div class="time">
+                6:00 PM
+            </div>
+
+            <h3>
+                EVENING CLASH
+            </h3>
+
+            <span>
+                DAILY
+            </span>
+
+        </div>
+
+
+        <div class="time-card">
+
+            <div class="time">
+                9:00 PM
+            </div>
+
+            <h3>
+                NIGHT SHOWDOWN
+            </h3>
+
+            <span>
+                DAILY
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PAYMENT -->
+
+<section id="payment">
+
+    <div class="section-head">
+
+        <div class="kicker">
+            SECURE PAYMENT
+        </div>
+
+        <h2>
+            PAY & BOOK YOUR SLOT
+        </h2>
+
+        <p>
+            Lobby select karo, payment complete karo
+            aur screenshot slot booking WhatsApp par bhejo.
+        </p>
+
+    </div>
+
+
+    <div class="payment-box">
+
+        <div class="payment-content">
+
+
+            <div class="payment-left">
+
+                <span class="payment-badge">
+                    💳 QUICK PAYMENT
+                </span>
+
+                <h3>
+                    SCAN & PAY
+                </h3>
+
+                <p>
+                    Gaming Mount tournament entry ke liye
+                    neeche diya gaya UPI QR code scan karein.
+                    Payment ke baad screenshot slot booking
+                    WhatsApp par bhejein.
+                </p>
+
+
+                <div class="payment-fees">
+
+                    <div>
+                        <span>₹12</span>
+                        <small>STARTER</small>
+                    </div>
+
+                    <div>
+                        <span>₹15</span>
+                        <small>PRO</small>
+                    </div>
+
+                    <div>
+                        <span>₹20</span>
+                        <small>ELITE</small>
+                    </div>
+
+                    <div>
+                        <span>₹40</span>
+                        <small>CHAMPION</small>
+                    </div>
+
+                </div>
+
+
+                <div class="payment-steps">
+
+                    <p>
+                        <b>01</b>
+                        QR code scan karke selected entry fee pay karein.
+                    </p>
+
+                    <p>
+                        <b>02</b>
+                        Payment ka screenshot save karein.
+                    </p>
+
+                    <p>
+                        <b>03</b>
+                        Screenshot slot booking WhatsApp par bhejein.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="btn btn-primary slot-book"
+                    data-message="Hello Gaming Mount! I have completed my tournament payment. I am sending my payment screenshot. Please confirm my slot."
+                >
+                    📲 SEND PAYMENT SCREENSHOT
+                </a>
+
+            </div>
+
+
+            <!-- QR CODE -->
+
+            <div class="qr-container">
+
+                <div class="qr-title">
+                    GAMING MOUNT PAYMENT
+                </div>
+
+                <div class="qr-frame">
+
+                    <!-- FIXED GITHUB RAW QR IMAGE -->
+
+                    <img
+                        class="qr-image"
+                        src="https://raw.githubusercontent.com/ashu00999/gaming-mount/main/qr.jpeg"
+                        alt="Gaming Mount UPI Payment QR"
+                    >
+
+                </div>
+
+                <div class="qr-scan">
+                    SCAN TO PAY
+                </div>
+
+                <div class="qr-note">
+                    UPI ID: 8299647826@fam
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW TO JOIN -->
+
+<section id="join">
+
+    <div class="section-head">
+
+        <div class="kicker">
+            EASY REGISTRATION
+        </div>
+
+        <h2>
+            HOW TO JOIN
+        </h2>
+
+        <p>
+            Registration process simple rakha gaya hai.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h3>
+                CHOOSE LOBBY
+            </h3>
+
+            <p>
+                Free ya ₹12, ₹15, ₹20, ₹40 paid lobby
+                select karo.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h3>
+                MAKE PAYMENT
+            </h3>
+
+            <p>
+                QR code scan karke selected lobby ki
+                entry fee pay karo.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h3>
+                SEND SCREENSHOT
+            </h3>
+
+            <p>
+                Payment screenshot slot booking WhatsApp
+                par bhejo.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- YOUTUBE -->
+
+<section id="live">
+
+    <div class="youtube">
+
+        <div class="icon">
+            ▶️
+        </div>
+
+        <h2>
+            GAMING MOUNT LIVE
+        </h2>
+
+        <p>
+            Tournament matches YouTube par live stream hote hain.
+            Apni favourite lobby ka action miss mat karo.
+        </p>
+
+        <a
+            href="https://www.youtube.com/@Anurag-x9o4v"
+            target="_blank"
+            class="btn btn-primary"
+        >
+            🔴 WATCH ON YOUTUBE
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL CTA -->
+
+<section>
+
+    <div class="cta">
+
+        <h2>
+            READY TO DOMINATE?
+        </h2>
+
+        <p>
+            Gaming Mount par apni next Free Fire lobby book karo.
+            <br>
+            Payment ke baad screenshot slot booking WhatsApp par bhejo.
+        </p>
+
+        <a
+            href="#"
+            class="btn btn-primary slot-book"
+            data-message="Hello Gaming Mount! I want to book a tournament slot. Please send me today's available tournaments and timings."
+        >
+            🎟️ BOOK YOUR SLOT
+        </a>
+
+        <div class="contact">
+
+            📱 Owner / General Contact:
+            +91 82996 47826
+
+            <br>
+
+            🎟️ Slot Booking:
+            +91 93079 12119
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026
+    <strong>
+        GAMING MOUNT
+    </strong>
+
+    <br><br>
+
+    Free Fire • Esports • Daily Tournaments • Live Matches
+
+    <br><br>
+
+    <a
+        href="https://www.youtube.com/@Anurag-x9o4v"
+        target="_blank"
+    >
+        ▶ Gaming Mount Live on YouTube
+    </a>
+
+</footer>
+
+
+<!-- FLOATING WHATSAPP -->
+
+<a
+    href="#"
+    class="whatsapp slot-book"
+    data-message="Hello Gaming Mount! I want to book a tournament slot. Please send me today's available tournaments."
+    title="Book Tournament Slot"
+>
+    💬
+</a>
+
+
+<script>
+
+/* SLOT BOOKING WHATSAPP */
+
+const SLOT_BOOKING_WHATSAPP =
+"919307912119";
+
+
+document
+.querySelectorAll(".slot-book")
+.forEach(button => {
+
+    button.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        const message =
+        button.dataset.message ||
+        "Hello Gaming Mount! I want to book a tournament slot.";
+
+        const whatsappURL =
+        "https://wa.me/" +
+        SLOT_BOOKING_WHATSAPP +
+        "?text=" +
+        encodeURIComponent(message);
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+    });
+
+});
+
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+    document
+    .getElementById("navLinks")
+    .classList
+    .toggle("mobile");
+
+}
+
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        () => {
+
+            document
+            .getElementById("navLinks")
+            .classList
+            .remove("mobile");
+
+        }
+    );
+
+});
+
+
+/* GAMING PARTICLES */
+
+const particles =
+document.getElementById("particles");
+
+
+for(let i = 0; i < 55; i++){
+
+    const particle =
+    document.createElement("div");
+
+    particle.className =
+    "particle";
+
+    particle.style.left =
+    Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+    5 + Math.random() * 12 + "s";
+
+    particle.style.animationDelay =
+    -Math.random() * 12 + "s";
+
+    particle.style.opacity =
+    .2 + Math.random() * .7;
+
+    particles.appendChild(
+        particle
+    );
+
+}
+
+</script>
+
+</body>
+</html>
+```
